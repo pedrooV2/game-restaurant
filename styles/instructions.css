@@ -1,0 +1,83 @@
+.slider-content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.instructions {
+    display: none;
+}
+
+.instructions img {
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.btn-content {
+    position: absolute;
+    width: 90%;
+    height: 120px;
+    bottom: 40px;
+}
+
+.btn-content button,
+.btn-content div {
+    display: flex;
+    width: 120px;
+    height: 120px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+.btn-content div a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+#btn-preview {
+    position: absolute;
+    display: none;
+    left: 0;
+    background-color: var(--light-blue);
+}
+
+#btn-preview:hover {
+    background-color: var(--dark-blue);
+}
+
+#btn-next {
+    position: absolute;
+    right: 0;
+    background-color: var(--light-blue);
+}
+
+#btn-next:hover {
+    background-color: var(--dark-blue);
+}
+
+#btn-play {
+    position: absolute;
+    display: none;
+    right: 0;
+    background-color: var(--light-green);
+    color: #FFF;
+}
+
+#btn-play:hover {
+    background-color: var(--dark-green);
+}
+
+.show {
+    display: block;
+}

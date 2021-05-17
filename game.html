@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="game-screen">
+            <div id="back-instructions">
+                <a href="instructions.html" class="btn-back">
+                    <span class="material-icons">
+                        arrow_back_ios
+                    </span> Instruções
+                </a>
+            </div>
+            <img src="img/game_screen_832x633_constrast.png" id="game-screen" alt="Game screen">
+        </div>
+        <div class="content-features">
+            <div class="rules">
+                <div class="rules-content">
+                    <h2>Regras do Jogo</h2>
+                    <ul>
+                        <li>O máximo de personagens no cenário é 18.</li>
+                        <li>Não é obrigatório utilizar todos os tipos de personagens.</li>
+                        <li>Os personagens sobrepostos e fora dos cenários, serão desconsiderados.</li>
+                    </ul>
+                    <div class="example-img-overload">
+
+                    </div>
+                </div>
+            </div>
+            <div class="divider"></div>
+            <div class="content-characters">
+                <div class="characters-box">
+                    <h3>Atendente</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters attendants">
+                            <div class="character" id="attendant1">
+                                <img src="img/atendente.png" alt="">
+                            </div>
+                            <div class="character" id="attendant2">
+                                <img src="img/atendente.png" alt="">
+                            </div>
+                            <div class="character" id="attendant3">
+                                <img src="img/atendente.png" alt="">
+                            </div>
+                            <div class="character" id="attendant4">
+                                <img src="img/atendente.png" alt="">
+                            </div>
+                            <div class="character" id="attendant5">
+                                <img src="img/atendente.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span> </div>
+                            <span class="popup-content">
+                                <p>Recepciona os clientes e serve aperitivos / bebidas frequentemente</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="characters-box">
+                    <h3>Garçons</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters waiters">
+                            <div class="character" id="waiter1">
+                                <img src="img/garcom.png" alt="">
+                            </div>
+                            <div class="character" id="waiter2">
+                                <img src="img/garcom.png" alt="">
+                            </div>
+                            <div class="character" id="waiter3">
+                                <img src="img/garcom.png" alt="">
+                            </div>
+                            <div class="character" id="waiter4">
+                                <img src="img/garcom.png" alt="">
+                            </div>
+                            <div class="character" id="waiter5">
+                                <img src="img/garcom.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span></div>
+                            <span class="popup-content">
+                                <p>Serve pratos e bebidas aos clientes do restaurante</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="characters-box">
+                    <h3>Aux. de cozinha</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters assistant-chief">
+                            <div class="character" id="assistant-chief1">
+                                <img src="img/auxiliar_chefe.png" alt="">
+                            </div>
+                            <div class="character" id="assistant-chief2">
+                                <img src="img/auxiliar_chefe.png" alt="">
+                            </div>
+                            <div class="character" id="assistant-chief3">
+                                <img src="img/auxiliar_chefe.png" alt="">
+                            </div>
+                            <div class="character" id="assistant-chief4">
+                                <img src="img/auxiliar_chefe.png" alt="">
+                            </div>
+                            <div class="character" id="assistant-chief5">
+                                <img src="img/auxiliar_chefe.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span></div>
+                            <span class="popup-content">
+                                <p>Mantém a cozinha organizada e da suporte ao chefe de cozinha</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="characters-box">
+                    <h3>Gerentes</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters managers">
+                            <div class="character" id="manager1">
+                                <img src="img/gerente.png" alt="">
+                            </div>
+                            <div class="character" id="manager2">
+                                <img src="img/gerente.png" alt="">
+                            </div>
+                            <div class="character" id="manager3">
+                                <img src="img/gerente.png" alt="">
+                            </div>
+                            <div class="character" id="manager4">
+                                <img src="img/gerente.png" alt="">
+                            </div>
+                            <div class="character" id="manager5">
+                                <img src="img/gerente.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span></div>
+                            <span class="popup-content">
+                                <p>Planeja as atividades e monitora os setores do restaurante</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="characters-box">
+                    <h3>Chefs</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters chefs">
+                            <div class="character" id="chef1">
+                                <img src="img/chefe.png" alt="">
+                            </div>
+                            <div class="character" id="chef2">
+                                <img src="img/chefe.png" alt="">
+                            </div>
+                            <div class="character" id="chef3">
+                                <img src="img/chefe.png" alt="">
+                            </div>
+                            <div class="character" id="chef4">
+                                <img src="img/chefe.png" alt="">
+                            </div>
+                            <div class="character" id="chef5">
+                                <img src="img/chefe.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span></div>
+                            <span class="popup-content">
+                                <p>Orienta os aux. de cozinha, prepara os pratos e define o menu do restaurante</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+
+                <div class="characters-box">
+                    <h3>Aux. de limpeza</h3>
+                    <div class="row-characters-content">
+                        <div class="row-characters cleaning-assistant">
+                            <div class="character" id="cleaning-assistant1">
+                                <img src="img/limpeza.png" alt="">
+                            </div>
+                            <div class="character" id="cleaning-assistant2">
+                                <img src="img/limpeza.png" alt="">
+                            </div>
+                            <div class="character" id="cleaning-assistant3">
+                                <img src="img/limpeza.png" alt="">
+                            </div>
+                            <div class="character" id="cleaning-assistant4">
+                                <img src="img/limpeza.png" alt="">
+                            </div>
+                            <div class="character" id="cleaning-assistant5">
+                                <img src="img/limpeza.png" alt="">
+                            </div>
+                        </div>
+                        <!-- <div class="popup-character">
+                            <div class="popup-info"> <span class="material-icons">
+                                    person_search
+                                </span></div>
+                            <span class="popup-content">
+                                <p>Realiza a higienização e conservação dos ambientes do restaurante</p>
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="game-features">
+                <div class="counter">
+                    <h4>Contador</h4>
+                    <div class="count-character">0</div>
+                </div>
+                <div class="end-game">
+                    <button>Finalizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Limit Character -->
+    <div id="modal-limit" class="modal">
+        <div class="modal-content bounce-in-top">
+            <div class="close-content">
+                <span class="close" onclick="closeModal('modal-limit')">&times</span>
+            </div>
+            <div class="text-content">
+                <h1>Atençãoooo!</h1>
+                <p>O limite máximo de personagens no cenário é <strong>18</strong>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-end-game" class="modal">
+        <div class="modal-content bounce-in-top" style="border-color: #27AE60;">
+            <div class="close-content">
+                <span class="close" onclick="closeModal('modal-end-game')">&times</span>
+            </div>
+            <div class="text-content">
+                <h1 style="color: #27AE60;">End Game</h1>
+                <p>Você deseja confirmar seu game?</p>
+            </div>
+            <div class="btn-confirm">
+                <button>
+                    <div id="loaderEndGame" class="lds-dual-ring" style="display: none;"></div>
+                    <span id="confirmText">Confirmar</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/api.js" defer></script>
+    <script src="scripts/gameFeatures.js" defer></script>
+    <script src="scripts/gameHandler.js" defer></script>
+    <script src="scripts/game.js" defer></script>
+</body>
+
+</html>

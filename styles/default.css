@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', 'Arial', sans-serif;
+    user-select: none;
+}
+
+:root {
+    --light-blue: #3498db;
+    --dark-blue: #2980b9;
+    --light-green: #27AE60;
+    --dark-green: #219653;
+    --light-gray: #F2F2F2;
+    --cloud-gray: #ecf0f1;
+    --medium-gray: #7f8c8d;
+    --dark-black: #333333;
+    --midnight-blue: #2c3e50;
+}
