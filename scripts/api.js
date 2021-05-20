@@ -1,6 +1,6 @@
 class Api {
 
-    baseUrl = "http://localhost:5000/api";
+    baseUrl = "http://localhost/gamificationapi/api";
 
     async getRequest(endpoint) {
         const options = {
