@@ -1,14 +1,12 @@
-.container {
+.content {
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 24px 24px;
     background-color: #FFF;
-}
-
-.content {
     text-align: center;
 }
 
@@ -17,12 +15,11 @@
     font-weight: 800;
     font-family: 'Montserrat-Bold';
     color: var(--light-blue);
-    margin-bottom: 32px;
     text-transform: uppercase;
 }
 
 .content h2 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     font-weight: 700;
     font-family: 'Montserrat-Bold';
     color: var(--midnight-blue);
@@ -31,9 +28,9 @@
 }
 
 .content p {
+    margin-top: 24px;
     font-size: 1em;
     color: var(--midnight-blue);
-    margin-bottom: 24px;
 }
 
 .content p span {
@@ -41,21 +38,10 @@
     text-transform: uppercase;
 }
 
-
-/*Start Game Button*/
-
-.btn-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn-content a {
-    text-decoration: none;
-}
-
 .btn-start {
+    display: block;
     padding: 32px 84px;
+    margin-top: 24px;
     background-color: var(--light-green);
     border-radius: 4px;
     border: none;
@@ -65,6 +51,7 @@
     text-transform: uppercase;
     font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
     text-decoration: none;
 }
 

@@ -7,23 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="styles/default.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/animations.css">
 
-    <title>Gamefication</title>
+    <title>Gamification</title>
 </head>
 
 <body>
-    <div class="container">
-        <div class="content bounce-in-top">
-            <h2>Data Science</h2>
-            <h1>Gamification</h1>
-            <p class="blink">Clique em <span>Start</span> para começar seu game</p>
-            <a href="instructions.html"><button class="btn-start">Start</button></a>
-        </div>
-    </div>
+    <div class="content">
+        <h2>Data Science</h2>
+        <h1>Gamification</h1>
+        <p class="blink">Clique em <span>Start</span> para começar seu game</p>
+            <a href="instructions.html" class="btn-start">Start</a>
     </div>
 
     <script src="scripts/gameHandler.js" defer></script>
@@ -36,7 +33,6 @@
             localStorage.setItem('startedAt', startedAt);
         });
     </script>
-
 </body>
 
 </html>
