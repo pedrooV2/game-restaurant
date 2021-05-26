@@ -91,7 +91,7 @@
 /* Characters content */
 
 .content-features {
-    max-width: 500px;
+    min-width: 500px;
     padding: 12px 12px;
     display: flex;
     flex-direction: column;
