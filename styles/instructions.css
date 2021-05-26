@@ -1,14 +1,39 @@
-.slider-content {
+.content {
     position: relative;
     display: flex;
     justify-content: center;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
 }
 
 .instructions {
     display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: aquamarine;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#part1 {
+    background-image: url('../img/instructions/part1.jpg');
+}
+
+#part2 {
+    background-image: url('../img/instructions/part2.jpg');
+}
+
+#part3 {
+    background-image: url('../img/instructions/part3.jpg');
+}
+
+#part4 {
+    background-image: url('../img/instructions/part4.jpg');
+}
+
+#part5 {
+    background-image: url('../img/instructions/part5.jpg');
 }
 
 .instructions img {
