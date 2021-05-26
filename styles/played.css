@@ -1,37 +1,34 @@
 .container {
+    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 24px 24px;
     background-color: var(--light-blue);
-}
-
-.content {
     color: #FFF;
     text-align: center;
 }
 
-.content img {
-    width: 180px;
+.container img {
+    width: 140px;
 }
 
-.content h1 {
+.container h1 {
     font-size: 3.4em;
-    margin: 24px 0px;
+    margin-top: 24px;
     font-weight: 700;
 }
 
-.content h2 {
-    font-size: 1.4em;
-    margin-bottom: 12px;
-    font-weight: 700;
-}
-
-.content p {
-    font-size: 1.2em;
+.container p {
+    font-size: 1em;
     line-height: 36px;
+}
+
+.btn-content{
+
 }
 
 .btn-play-again {
