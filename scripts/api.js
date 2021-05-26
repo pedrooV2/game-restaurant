@@ -1,6 +1,6 @@
 class Api {
 
-    baseUrl = "http://localhost/gamificationapi/api";
+    baseUrl = "http://game.paschoalotto.com.br/Gamificationapi/api";
 
     async getRequest(endpoint) {
         const options = {
