@@ -46,12 +46,18 @@ class Game {
         localStorage.removeItem('playingTime');
     }
 
-    checkStatedTimeHasBeenSet(){
+    checkStartedTimeHasBeenSet(){
         let startedAtExists = localStorage.getItem('startedAt');
         
         if(startedAtExists == null || startedAtExists == ""){
-            let startedAt = new Date().toISOString()
-            localStorage.setItem('startedAt', startedAt);
+            let now = new Date();
+            let date = now.toLocaleDateString();
+            let hour = now.toLocaleTimeString();
+
+            let currentDate = date.split("/");
+            currentDate = currentDate[2] + "-" + currentDate[1] + "-" + currentDate[0];
+            currentDate = currentDate + "T" + hour;
+            localStorage.setItem('startedAt', currentDate);
         }
     }
 
@@ -118,4 +124,4 @@ class Game {
 }
 
 var game = new Game();
-game.checkStatedTimeHasBeenSet();
+game.checkStartedTimeHasBeenSet();
