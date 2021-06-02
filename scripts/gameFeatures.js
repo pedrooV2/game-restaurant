@@ -46,10 +46,10 @@ class Game {
         localStorage.removeItem('playingTime');
     }
 
-    checkStartedTimeHasBeenSet(){
+    checkStartedTimeHasBeenSet() {
         let startedAtExists = localStorage.getItem('startedAt');
-        
-        if(startedAtExists == null || startedAtExists == ""){
+
+        if (startedAtExists == null || startedAtExists == "") {
             let now = new Date();
             let date = now.toLocaleDateString();
             let hour = now.toLocaleTimeString();
@@ -63,11 +63,16 @@ class Game {
 
     async endGame() {
         let gameResult = [];
+        const gameHandler = new GameHandler();
+        const api = new Api();
 
         const ad = localStorage.getItem('player');
         const startedAt = localStorage.getItem('startedAt');
 
-        const gameHandler = new GameHandler();
+        if (ad == null || ad == "") {
+            window.location.href = "404.html";
+            return;
+        }
 
         this.arrayCharacters.forEach((item) => {
             let element = document.querySelector(`#${item}`);
@@ -92,34 +97,33 @@ class Game {
             EndedAt: gameHandler.setCurrentDate()
         };
 
-        const api = new Api();
+        let response = await api.getRequest(`/players/${ad}`)
 
-        const playerExists = await api.getRequest(`/players/${ad}`)            
-        .then(response => {
-            return response;         
-        })
+        if (response.status == 200) {
+            window.location.href = "played.html";
+            this.drawSavedGameSettings();
+            closeModal('modal-end-game');
+            return;
+        }
 
-        if(playerExists.ok){
-            window.location.href = "played.html"
-        } 
-        else {
-            const playerRegistered = await api.postRequest(`/players/`, player)
-            .then(response => { return response })
-    
-            if(playerRegistered.ok){
-                if(gameResult != []){
+        if (response.ok && response.status == 204) {
+            response = await api.postRequest(`/players/`, player)
+
+            if (response.ok) {
+                if (gameResult != []) {
                     await api.postRequest(`/results/`, gameResult)
-                    .then(response => {
-                        if(response.ok){
-                            window.location.href = "success.html"
-                        }
-                    })
                 }
-            }
+            } 
+        }
+
+        if(response.ok){
+            window.location.href = "success.html";
+        } else {
+            window.location.href = "error.html";
         }
 
         this.drawSavedGameSettings();
-        closeModal('modal-end-game');        
+        closeModal('modal-end-game');
     }
 }
 
