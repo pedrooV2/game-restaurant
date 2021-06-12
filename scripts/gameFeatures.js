@@ -42,23 +42,10 @@ class Game {
     }
 
     drawSavedGameSettings() {
+        localStorage.removeItem('ad');
+        localStorage.removeItem('cpf');
+        localStorage.removeItem('startedAt');
         localStorage.removeItem('characters');
-        localStorage.removeItem('playingTime');
-    }
-
-    checkStartedTimeHasBeenSet() {
-        let startedAtExists = localStorage.getItem('startedAt');
-
-        if (startedAtExists == null || startedAtExists == "") {
-            let now = new Date();
-            let date = now.toLocaleDateString();
-            let hour = now.toLocaleTimeString();
-
-            let currentDate = date.split("/");
-            currentDate = currentDate[2] + "-" + currentDate[1] + "-" + currentDate[0];
-            currentDate = currentDate + "T" + hour;
-            localStorage.setItem('startedAt', currentDate);
-        }
     }
 
     async endGame() {
@@ -66,10 +53,11 @@ class Game {
         const gameHandler = new GameHandler();
         const api = new Api();
 
-        const ad = localStorage.getItem('player');
+        const ad = localStorage.getItem('ad');
+        const cpf = localStorage.getItem('cpf');
         const startedAt = localStorage.getItem('startedAt');
 
-        if (ad == null || ad == "") {
+        if(!gameHandler.isAuthenticated()){
             window.location.href = "404.html";
             return;
         }
@@ -92,35 +80,38 @@ class Game {
 
         let player = {
             ad,
+            cpf,
             played: true,
             startedAt,
-            EndedAt: gameHandler.setCurrentDate()
+            endedAt: gameHandler.setCurrentDate()
         };
 
-        let response = await api.getRequest(`/players/${ad}`)
+        // let response = await api.getRequest(`/players/${ad}`)
 
-        if (response.status == 200) {
-            window.location.href = "played.html";
-            this.drawSavedGameSettings();
-            closeModal('modal-end-game');
-            return;
-        }
+        // if (response.status == 200) {
+        //     window.location.href = "played.html";
+        //     this.drawSavedGameSettings();
+        //     closeModal('modal-end-game');
+        //     return;
+        // }
 
-        if (response.ok && response.status == 204) {
-            response = await api.postRequest(`/players/`, player)
+        // if (response.ok && response.status == 204) {
+        //     response = await api.postRequest(`/players/`, player)
 
-            if (response.ok) {
-                if (gameResult != []) {
-                    await api.postRequest(`/results/`, gameResult)
-                }
-            } 
-        }
+        //     if (response.ok) {
+        //         if (gameResult != []) {
+        //             await api.postRequest(`/results/`, gameResult)
+        //         }
+        //     } 
+        // }
 
-        if(response.ok){
-            window.location.href = "success.html";
-        } else {
-            window.location.href = "error.html";
-        }
+        // if(response.ok){
+        //     window.location.href = "success.html";
+        // } else {
+        //     window.location.href = "error.html";
+        // }
+
+        console.log(player);
 
         this.drawSavedGameSettings();
         closeModal('modal-end-game');
@@ -128,4 +119,4 @@ class Game {
 }
 
 var game = new Game();
-game.checkStartedTimeHasBeenSet();
+

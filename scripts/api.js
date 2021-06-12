@@ -11,6 +11,9 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint, options)
+        .then((response) => response)
+        .catch(() =>  window.location.href = "error.html")
+
         return response;
     }
 
@@ -36,6 +39,9 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint, options)
+        .then((response) => response)
+        .catch(() =>  window.location.href = "error.html")
+        
         return response;
     }
 }
