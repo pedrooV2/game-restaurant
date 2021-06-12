@@ -1,5 +1,6 @@
 class GameHandler {
 
+    // Não é mais utilizado
     setPlayerByUrl() {
         let url = new URL(window.location.href);
         let params = url.searchParams;
@@ -17,14 +18,20 @@ class GameHandler {
         }
     }
 
-    checkPlayerExists() {
-        let player = localStorage.getItem('player');
+    isAuthenticated() {
+        let player = localStorage.getItem('ad');
         return (player != null && player != "") ? true : false;
     }
 
-    invalidateGame() {
-        if (!this.checkPlayerExists()) {
+    checkInvalidAuthentication() {
+        if (!this.isAuthenticated()) {
             window.location.href = "404.html"
+        } 
+    }
+
+    checkAlreadyAuthenticated(){
+        if(this.isAuthenticated()){
+            window.location.href = "instructions.html"
         }
     }
 
@@ -56,9 +63,14 @@ class GameHandler {
         }
 
         let playerAuthorized = await response.json();
-        console.log(playerAuthorized)
-
         let startedAt = gameHandler.setCurrentDate();
+
+
+        localStorage.setItem('ad', playerAuthorized.ad);
+        localStorage.setItem('cpf', playerAuthorized.cpf);
         localStorage.setItem('startedAt', startedAt);
+
+        window.location.href = 'instructions.html';
     }
 }
+

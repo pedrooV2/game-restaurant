@@ -1,3 +1,6 @@
+const gameHandler = new GameHandler();
+gameHandler.checkInvalidAuthentication();
+
 var dragOfX = 0,
     dragOfY = 0,
     startPositionLeft = 0,

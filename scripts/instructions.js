@@ -1,3 +1,6 @@
+const gameHandler = new GameHandler();
+gameHandler.checkInvalidAuthentication();
+
 const instructions = document.querySelectorAll('.instructions');
 const btnNext = document.querySelector('#btn-next');
 const btnPreview = document.querySelector('#btn-preview');
