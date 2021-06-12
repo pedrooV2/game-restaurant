@@ -22,6 +22,20 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint, options)
+        .then((response) => response)
+        .catch(() =>  window.location.href = "error.html")
+        
+        return response;
+    }
+
+    async putRequest(endpoint, requestBody) {
+        const options = {
+            method: 'PUT',
+            body: JSON.stringify(requestBody),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        }
+
+        const response = await fetch(this.baseUrl + endpoint, options)
         return response;
     }
 }

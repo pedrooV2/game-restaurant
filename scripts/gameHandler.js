@@ -1,9 +1,5 @@
 class GameHandler {
 
-    constructor() {
-        this.setPlayerByUrl();
-    }
-
     setPlayerByUrl() {
         let url = new URL(window.location.href);
         let params = url.searchParams;
@@ -32,29 +28,37 @@ class GameHandler {
         }
     }
 
-    countSecondsPlayed() {
-        let chronometer = localStorage.getItem('chronometer')
-
-        if (chronometer != null) {
-            chronometer++;
-            localStorage.setItem('chronometer', chronometer)
-        }
-    }
-
     setCurrentDate(){
         let now = new Date();
         let date = now.toLocaleDateString();
         let hour = now.toLocaleTimeString();
 
-        //to timestamp
         let currentDate = date.split("/");
         currentDate = currentDate[2] + "-" + currentDate[1] + "-" + currentDate[0];
         currentDate = currentDate + "T" + hour;
 
         return currentDate;
     }
+
+    async authenticate(player){
+        const api = new Api();
+
+        let response = await api.postRequest('/api/authentication', player);
+        
+        if(!response.ok){
+            if(response.status == 404){
+                document.querySelector('#modal-authentication').style.display = 'block'
+                return;
+            }
+
+            window.location.href = "error.html";
+            return;
+        }
+
+        let playerAuthorized = await response.json();
+        console.log(playerAuthorized)
+
+        let startedAt = gameHandler.setCurrentDate();
+        localStorage.setItem('startedAt', startedAt);
+    }
 }
-
-const gameHandler = new GameHandler();
-
-gameHandler.invalidateGame();

@@ -38,10 +38,42 @@
     text-transform: uppercase;
 }
 
+.form-group{
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    margin-top: 24px;
+}
+
+.form-group span{
+    display: none;
+    text-align: left;
+    font-size: .8rem;
+    font-weight: 700;
+    color: var(--red);
+}
+
+.form-group .form-input {
+    padding: 12px 24px;
+    margin-bottom: 12px;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    outline: none;
+    background-color: var(--cloud-gray);
+    font-size: .9rem;
+    color: var(--dark-black);
+    text-transform: lowercase;
+}
+
+.form-group .form-input::placeholder{
+    text-transform: capitalize;
+}
+
 .btn-start {
     display: block;
-    padding: 32px 84px;
-    margin-top: 24px;
+    width: 100%;
+    padding: 24px 0;
     background-color: var(--light-green);
     border-radius: 4px;
     border: none;

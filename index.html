@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/default.css">
     <link rel="stylesheet" href="styles/index.css">
     <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/style.css">
 
     <title>Gamification</title>
 </head>
@@ -19,19 +20,82 @@
     <div class="content">
         <h2>Data Science</h2>
         <h1>Gamification</h1>
-        <p class="blink">Clique em <span>Start</span> para começar seu game</p>
-            <a href="instructions.html" class="btn-start">Start</a>
+        <p class="blink">Faça o login e clique em <span>Start</span> para começar seu game</p>
+        <form method="POST" class="form-group" id="form-login">
+            <span>Preencha o Login</span>
+            <input type="text" placeholder="Seu login" class="form-input" id="login">
+            <span>Preencha o CPF</span>
+            <input type="password" placeholder="Seu CPF" class="form-input" id="cpf">
+            <input type="submit" class="btn-start" value="Start">
+        </form>
     </div>
 
-    <script src="scripts/gameHandler.js" defer></script>
+    <div id="modal-authentication" class="modal">
+        <div class="modal-content bounce-in-top" style="border-color: var(--light-blue);">
+            <div class="close-content">
+                <span class="close" onclick="closeModal('modal-authentication')">&times</span>
+            </div>
+            <div class="text-content">
+                <h1 style="color: var(--light-blue);">Autenticação Inválida</h1>
+                <p>Infelizmente não encontramos você em nossa base. Verifique se você está inserindo os dados corretamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/gameHandler.js"></script>
 
     <script>
-        const btnStartGame = document.querySelector('.btn-start');
+        const gameHandler = new GameHandler();
+        const api = new Api();
 
-        btnStartGame.addEventListener('click', () => {
-            let startedAt = gameHandler.setCurrentDate();
-            localStorage.setItem('startedAt', startedAt);
+        const form = document.querySelector("#form-login");
+        const ad = document.querySelector("#login");
+        const cpf = document.querySelector("#cpf");
+
+        ad.addEventListener('keyup', () => {
+            ad.previousElementSibling.style.display = 'none';
         });
+
+        cpf.addEventListener('keyup', () => {
+            cpf.previousElementSibling.style.display = 'none';
+        });
+
+        form.addEventListener('submit', (evt) => {
+            evt.preventDefault();
+
+            let inputs = [ad, cpf];
+
+            if(!validateInputs(inputs))
+                return;
+
+            const player = {
+                ad: ad.value,
+                cpf: cpf.value
+            };
+
+            gameHandler.authenticate(player);
+
+        });
+
+        function validateInputs(inputs){
+            let inputsIsValid = true;
+
+            inputs.forEach(element => {
+                if(element.value == ""){
+                    element.previousElementSibling.style.display = 'block';
+                    inputsIsValid = false;
+                }
+            });
+
+            return inputsIsValid;
+        }
+
+        // Close modal
+        function closeModal(modal) {
+            let elModal = document.querySelector(`#${modal}`);
+            elModal.style.display = 'none';
+        }
     </script>
 </body>
 
