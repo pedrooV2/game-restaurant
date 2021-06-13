@@ -50,7 +50,7 @@ class GameHandler {
     async authenticate(player){
         const api = new Api();
 
-        let response = await api.postRequest('/api/authentication', player);
+        let response = await api.postRequest('/authentication', player);
         
         if(!response.ok){
             if(response.status == 404){
