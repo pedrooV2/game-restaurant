@@ -107,12 +107,14 @@ endGameBtn.onclick = () => {
 // End Game
 const confirmBtn = document.querySelector(".btn-confirm").children[0];
 
-confirmBtn.onclick = async () => {
-    loaderHandler(true)
+confirmBtn.onclick = async (e) => {
+    loaderHandler(true);
+    console.log('ativo')
 
     await game.endGame();
     
-    loaderHandler(false)
+    loaderHandler(false);
+    closeModal('modal-end-game');
 }
 
 // Toggle loader confirm button end game
@@ -121,6 +123,7 @@ function loaderHandler(activeLoader){
     const confirmText = document.querySelector("#confirmText");
 
     if(activeLoader){
+        confirmBtn.disabled = true;
         loader.style.display = "flex"
         confirmText.innerHTML = ""
     } else {

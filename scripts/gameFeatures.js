@@ -41,17 +41,12 @@ class Game {
         this.elCountCharacters.textContent = this.arrayCharacters.length;
     }
 
-    drawSavedGameSettings() {
-        localStorage.removeItem('ad');
-        localStorage.removeItem('cpf');
-        localStorage.removeItem('startedAt');
-        localStorage.removeItem('characters');
-    }
 
     async endGame() {
-        let gameResult = [];
         const gameHandler = new GameHandler();
         const api = new Api();
+
+        let gameResult = [];
 
         const ad = localStorage.getItem('ad');
         const cpf = localStorage.getItem('cpf');
@@ -87,58 +82,28 @@ class Game {
         })
 
         let response = await api.getRequest('/players', `?ad=${player.ad}&cpf=${player.cpf}`);
-
-        if(!response.ok){
-            if(response.status == 404 || response.status == 400){
-                this.drawSavedGameSettings();
-                window.location.href = "404.html"
-                return;
-            }
-
-            window.location.href = "error.html";
-            return;
-        }
-
+        
+        if(!gameHandler.responseValidator(response)) return;
+        
         let getPlayer = await response.json();
 
         if(getPlayer.played){
             window.location.href = "played.html";
-            this.drawSavedGameSettings();
+            gameHandler.drawSavedGameSettings();
             return;
         }
-
-        if(gameResult != []){
-            response = await api.postRequest('/results', gameResult);
-
-            if(!response.ok){
-                if(response.status == 404 || response.status == 400){
-                    this.drawSavedGameSettings();
-                    window.location.href = "404.html"
-                    return;
-                }
+        else {
+            if(gameResult.length !== 0){
+                response = await api.postRequest('/results', gameResult);
+                if(!gameHandler.responseValidator(response)) return;
+            }
     
-                window.location.href = "error.html";
-                return;
-            }
-        }
-
-        response = await api.putRequest('/players', player)
-
-        if(!response.ok){
-            if(response.status == 404 || response.status == 400){
-                this.drawSavedGameSettings();
-                window.location.href = "404.html"
-                return;
-            }
-
-            window.location.href = "error.html";
-            return;
+            response = await api.putRequest('/players', player)   
+            if(!gameHandler.responseValidator(response)) return;
         }
 
         window.location.href = "success.html";
-
-        this.drawSavedGameSettings();
-        closeModal('modal-end-game');
+        gameHandler.drawSavedGameSettings();
     }
 }
 

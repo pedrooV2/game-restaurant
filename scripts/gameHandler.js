@@ -46,6 +46,13 @@ class GameHandler {
 
         return currentDate;
     }
+    
+    drawSavedGameSettings() {
+        localStorage.removeItem('ad');
+        localStorage.removeItem('cpf');
+        localStorage.removeItem('startedAt');
+        localStorage.removeItem('characters');
+    }
 
     async authenticate(player){
         const api = new Api();
@@ -72,5 +79,22 @@ class GameHandler {
 
         window.location.href = 'instructions.html';
     }
+
+    responseValidator(response){
+        if(!response.ok){
+            if(response.status == 404 || response.status == 400){
+                window.location.href = "404.html";
+            } 
+            else {
+                window.location.href = "error.html";
+            }
+
+            this.drawSavedGameSettings();
+            return false;
+        }
+
+        return true;
+    }
+    
 }
 
