@@ -49,7 +49,12 @@
         const gameHandler = new GameHandler();
         const api = new Api();
 
-        gameHandler.checkAlreadyAuthenticated();
+        if(gameHandler.isAuthenticated()){
+            window.location.href = "instructions.html";
+        } 
+        else {
+            gameHandler.drawSavedGameSettings();
+        }
 
         const form = document.querySelector("#form-login");
         const ad = document.querySelector("#login");

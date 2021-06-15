@@ -29,12 +29,6 @@ class GameHandler {
         } 
     }
 
-    checkAlreadyAuthenticated(){
-        if(this.isAuthenticated()){
-            window.location.href = "instructions.html"
-        }
-    }
-
     setCurrentDate(){
         let now = new Date();
         let date = now.toLocaleDateString();
@@ -48,10 +42,7 @@ class GameHandler {
     }
     
     drawSavedGameSettings() {
-        localStorage.removeItem('ad');
-        localStorage.removeItem('cpf');
-        localStorage.removeItem('startedAt');
-        localStorage.removeItem('characters');
+        localStorage.clear();
     }
 
     async authenticate(player){

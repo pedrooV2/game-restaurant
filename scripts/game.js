@@ -98,6 +98,13 @@ function closeModal(modal) {
     elModal.style.display = 'none';
 }
 
+// Btn reset
+const btnReset = document.querySelector(".btn-reset");
+btnReset.onclick = () => {
+    localStorage.removeItem('characters'); 
+    window.location.href = 'game.html'
+}
+
 // Modal End Game
 const endGameBtn = document.querySelector(".end-game").children[0];
 endGameBtn.onclick = () => {
@@ -109,7 +116,6 @@ const confirmBtn = document.querySelector(".btn-confirm").children[0];
 
 confirmBtn.onclick = async (e) => {
     loaderHandler(true);
-    console.log('ativo')
 
     await game.endGame();
     
