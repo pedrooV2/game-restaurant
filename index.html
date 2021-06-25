@@ -37,7 +37,29 @@
             </div>
             <div class="text-content">
                 <h1 style="color: var(--light-blue);">Autenticação Inválida</h1>
-                <p>Infelizmente não encontramos você em nossa base. Verifique se você está inserindo os dados corretamente.</p>
+                <p>Infelizmente não encontramos você em nossa base. Verifique se você está inserindo os dados
+                    corretamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-lgpd" class="modal">
+        <div class="modal-content bounce-in-top" style="border-color: var(--light-blue);">
+            <div class="text-content" style="margin-top: 24px;">
+                <h1 style="color: var(--light-blue);">Diponibilização dos dados</h1>
+                <p style="text-align: justify;">Estou ciente e de acordo em disponibilizar meus
+                    dados pessoais para o
+                    projeto Match Operacional
+                    conduzido pela Paschoalotto e de que serão utilizados com a finalidade exclusiva para mapeamento de
+                    dados.<br> Estou ciente de que, a qualquer momento, poderei revogar este consentimento, optar pela
+                    anonimização, bloqueio, retificação ou eliminação de dados desnecessários, excessivos ou tratados em
+                    desconformidade com a LGPD.<br> Este consentimento serve para atendimento aos requisitos da Lei nº
+                    13.709/18 (Lei Geral de Proteção de Dados).</p>
+            </div>
+            <div class="btn-modal">
+                <button id="btn-modal-lgpd">
+                    <span>Aceito</span>
+                </button>
             </div>
         </div>
     </div>
@@ -46,12 +68,19 @@
     <script src="scripts/gameHandler.js"></script>
 
     <script>
+
+        const modalLgpd = document.querySelector('#modal-lgpd');
+        const btnModal = document.querySelector('#btn-modal-lgpd');
+
+        modalLgpd.style.display = 'block';
+        btnModal.onclick = () => modalLgpd.style.display = 'none';
+
         const gameHandler = new GameHandler();
         const api = new Api();
 
-        if(gameHandler.isAuthenticated()){
+        if (gameHandler.isAuthenticated()) {
             window.location.href = "instructions.html";
-        } 
+        }
         else {
             gameHandler.drawSavedGameSettings();
         }
@@ -73,7 +102,7 @@
 
             let inputs = [ad, cpf];
 
-            if(!validateInputs(inputs))
+            if (!validateInputs(inputs))
                 return;
 
             const player = {
@@ -84,11 +113,11 @@
             gameHandler.authenticate(player);
         });
 
-        function validateInputs(inputs){
+        function validateInputs(inputs) {
             let inputsIsValid = true;
 
             inputs.forEach(element => {
-                if(element.value == ""){
+                if (element.value == "") {
                     element.previousElementSibling.style.display = 'block';
                     inputsIsValid = false;
                 }

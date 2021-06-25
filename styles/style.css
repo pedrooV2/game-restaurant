@@ -347,6 +347,36 @@
     width: 30%;
 }
 
+.modal-content .btn-modal {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.modal-content .btn-modal button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 48px;
+    padding: 24px;
+    color: #FFF;
+    background-color: var(--light-green);
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.modal-content .btn-modal button:hover {
+    background-color: var(--dark-green);
+    color: #FFF;
+    transition: .1s ease-in
+}
+
+
 .modal-content .btn-confirm {
     display: flex;
     justify-content: flex-end;

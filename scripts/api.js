@@ -1,7 +1,7 @@
 class Api {
 
-    // baseUrl = "http://game.paschoalotto.com.br/Gamification/api";
-    baseUrl = "http://localhost:5000/api";
+    baseUrl = "http://game.paschoalotto.com.br/gamificationapi/api";
+    //baseUrl = "http://localhost:5000/api";
 
     async getRequest(endpoint, queryParams = "") {
         const options = {
@@ -10,8 +10,8 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint + queryParams, options)
-        .then((response) => response)
-        .catch(() =>  window.location.href = "error.html")
+            .then((response) => response)
+            .catch(() => window.location.href = "error.html")
 
         return response;
     }
@@ -25,9 +25,9 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint, options)
-        .then((response) => response)
-        .catch(() =>  window.location.href = "error.html")
-        
+            .then((response) => response)
+            .catch(() => window.location.href = "error.html")
+
         return response;
     }
 
@@ -40,9 +40,9 @@ class Api {
         }
 
         const response = await fetch(this.baseUrl + endpoint, options)
-        .then((response) => response)
-        .catch(() =>  window.location.href = "error.html")
-        
+            .then((response) => response)
+            .catch(() => window.location.href = "error.html")
+
         return response;
     }
 }
